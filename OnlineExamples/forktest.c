@@ -19,11 +19,10 @@ int main(int argc, char *argv[])
     else if(pid == 0) //if inside child
     {
         printf("I am the child with pid: %d\n", (int)getpid());
+        exit(0);
     }
-    else if (pid >= 0) //if in parent
-    {
-        printf("I am the parent\n");
-    }
+    //we must be the parent, because the child exited
+    printf("I am the parent\n");
     
     return 0;
 }
