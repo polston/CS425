@@ -6,10 +6,24 @@
 
 #define MAX_LINE 90
 
+void setup(char* strArr[], char str[])
+{
+	char **next = strArr;
+	char *t = strtok(str, " ");
+		int count = 0;
+		
+		while (t != NULL)
+	    {
+	        *next++ = t;
+	        t = strtok(NULL, " ");
+	    }
+	    *next = NULL;
+}
+
 int main(void)
 {
 	char *args[MAX_LINE]; // command line arguments
-	char **next = args;
+	
 	char input[MAX_LINE];
 	int should_run = 1;
 	pid_t pid = fork();
@@ -37,12 +51,13 @@ int main(void)
 		
 		//read user input
 		//Put strings into the array
+		/*
 		char *t = strtok(input, " ");
 		int count = 0;
 		
 		while (t != NULL)
 	    {
-	        printf("t: %s\n", t);
+	        //printf("t: %s\n", t);
 	        *next++ = t;
 	        //strcpy(args[count], t);
 	        t = strtok(NULL, " ");
@@ -50,9 +65,12 @@ int main(void)
 	        //count++;
 	    }
 	    *next = NULL;
+	    */
+	    
+	    setup(args, input);
 	    
 	    puts("Checking:");
-        for (next = args; *next != 0; next++)
+        for (char **next = args; *next != 0; next++)
             puts(*next);
 	    
 		pid = fork();
