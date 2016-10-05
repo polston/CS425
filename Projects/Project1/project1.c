@@ -48,7 +48,7 @@ int main(void)
 	
 	char input[MAX_LINE];
 	int should_run = 1;
-	pid_t pid = fork();
+	pid_t pid;
 	
 	//char* thing = "";
 
